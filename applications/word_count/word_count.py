@@ -1,6 +1,19 @@
 def word_count(s):
     # Your code here
+    cache = {}
+    result = s.lower()
+    cant_Have = r':,;.-+=/\|[]{}()*^&"'
 
+    for characters in result:
+        if characters in cant_Have:
+            result = result.replace(characters,"")
+    words = result.split()
+    for word in words:
+        if word in cache:
+            cache[word] += 1
+        else:
+            cache[word] = 1
+    return cache
 
 
 if __name__ == "__main__":
